@@ -1,4 +1,5 @@
 import streamlit as st
+from model.model import predict
 from preprocessing.preprocess import preprocess
 
 data = {}
@@ -26,11 +27,11 @@ NumberOfFacades = input.number_input('Number of facades', value=0)
 submit = input.form_submit_button('Submit data')
 
 if submit:
-    data['Type of property'] = TypeOfProperty
-    data['Subtype of property'] = SubtypeOfProperty
-    data['Type of sale'] = TypeOfSale
-    data['State of the building'] = StateOfTheBuilding
-    data['Compound Listing'] = CompoundListing
+    data['Type of property'] = TypeOfProperty[0]
+    data['Subtype of property'] = SubtypeOfProperty[0]
+    data['Type of sale'] = TypeOfSale[0]
+    data['State of the building'] = StateOfTheBuilding[0]
+    data['Compound Listing'] = CompoundListing[0]
 
     data['Locality'] = Locality
     data['Garden area'] = GardenArea
@@ -40,4 +41,9 @@ if submit:
     data['Living Area'] = LivingArea
     data['Terrace area'] = TerraceArea
     data['Number of facades'] = NumberOfFacades
-    preprocess(data)
+    row, data, preprocessed_data= preprocess(data)
+    row
+    data
+    preprocessed_data
+    pred = predict(preprocessed_data)
+    pred
