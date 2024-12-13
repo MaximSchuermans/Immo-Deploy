@@ -8,11 +8,16 @@ st.title('Immo price prediction')
 
 input = st.form('Input data')
 
-TypeOfProperty = input.multiselect('Type of property', ['Appartment', 'House'], default='Appartment')
-SubtypeOfProperty = input.multiselect('SubtypeOfProperty', ['Option1', 'Option2'], default='Option1')
-TypeOfSale = input.multiselect('Type of sale', ['Option1', 'Option2'], default='Option1')
-StateOfTheBuilding = input.multiselect('State of the building', ['Option1', 'Option2'], default='Option1')
-CompoundListing = input.multiselect('Compound Listing', ['True', 'False'], default='True')
+TypeOfProperty = input.multiselect('Type of property', ['HOUSE', 'APARTMENT'], default='APARTMENT')
+SubtypeOfProperty = input.multiselect('SubtypeOfProperty', ['APARTMENT', 'PENTHOUSE', 'GROUND_FLOOR', 'KOT', 'FLAT_STUDIO',
+       'DUPLEX', 'LOFT', 'TRIPLEX', 'SERVICE_FLAT', 'APARTMENT_BLOCK',
+       'HOUSE', 'MANSION', 'VILLA', 'MIXED_USE_BUILDING',
+       'COUNTRY_COTTAGE', 'FARMHOUSE', 'BUNGALOW', 'TOWN_HOUSE',
+       'OTHER_PROPERTY', 'EXCEPTIONAL_PROPERTY', 'MANOR_HOUSE', 'CHALET'], default='APARTMENT')
+TypeOfSale = input.multiselect('Type of sale', ['residential_sale'], default='residential_sale')
+StateOfTheBuilding = input.multiselect('State of the building', ['GOOD', 'AS_NEW', 'UNKNOWN', 'JUST_RENOVATED', 'TO_RENOVATE',
+       'TO_BE_DONE_UP', 'TO_RESTORE'], default='GOOD') 
+CompoundListing = input.multiselect('Compound Listing', ['single', 'compound'], default='single')
 
 Locality = input.number_input('Locality', value=1000)
 GardenArea = input.number_input('Garden Area', value=0.0)
