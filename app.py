@@ -1,4 +1,5 @@
 import streamlit as st
+from preprocessing.preprocess import preprocess
 
 data = {}
 
@@ -6,11 +7,11 @@ st.title('Immo price prediction')
 
 input = st.form('Input data')
 
-TypeOfProperty = input.multiselect('Type of property', ['Appartment', 'House'])
-SubtypeOfProperty = input.multiselect('SubtypeOfProperty', ['Option1', 'Option2'])
-TypeOfSale = input.multiselect('Type of sale', ['Option1', 'Option2'])
-StateOfTheBuilding = input.multiselect('State of the building', ['Option1', 'Option2'])
-CompoundListing = input.multiselect('Compound Listing', ['True', 'False'])
+TypeOfProperty = input.multiselect('Type of property', ['Appartment', 'House'], default='Appartment')
+SubtypeOfProperty = input.multiselect('SubtypeOfProperty', ['Option1', 'Option2'], default='Option1')
+TypeOfSale = input.multiselect('Type of sale', ['Option1', 'Option2'], default='Option1')
+StateOfTheBuilding = input.multiselect('State of the building', ['Option1', 'Option2'], default='Option1')
+CompoundListing = input.multiselect('Compound Listing', ['True', 'False'], default='True')
 
 Locality = input.number_input('Locality', value=1000)
 GardenArea = input.number_input('Garden Area', value=0.0)
@@ -39,5 +40,4 @@ if submit:
     data['Living Area'] = LivingArea
     data['Terrace area'] = TerraceArea
     data['Number of facades'] = NumberOfFacades
-
-data
+    preprocess(data)
